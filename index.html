@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wild Boar Finance • API Hub</title>
-  <meta name="description" content="Модульная документация Wild Boar Finance API: DeFi Index, Altcoin Index и другие сервисы рыночных данных." />
+  <title>Wild Boar • API</title>
+  <meta name="description" content="Модульная документация Wild Boar API: DeFi Index, Altcoin Index и другие сервисы рыночных данных." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -15,19 +15,18 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand-card">
         <div class="logo">WB</div>
-        <div class="brand-name">Wild Boar Finance</div>
+        <div class="brand-name">Wild Boar</div>
         <p class="brand-tagline">Маркет-дата, индексы и аналитика по цифровым активам уровня институциональных клиентов.</p>
       </div>
       <nav class="side-nav" id="side-nav"></nav>
       <div class="sidebar-footer">
-        <div>Контакты: <a href="mailto:api@wildboar.finance">api@wildboar.finance</a></div>
-        <div>Поддержка: Telegram @wildboar_dev</div>
+        <div>Контакты: <a href="mailto:support@wildboar.finance">support@wildboar.finance</a></div>
       </div>
     </aside>
 
     <main class="content">
       <header class="hero" id="overview">
-        <div class="hero-kicker">Wild Boar Finance API</div>
+        <div class="hero-kicker">Wild Boar API</div>
         <h1>Единый доступ к данным DeFi и рынка альткоинов</h1>
         <p class="hero-subtitle">Предоставляем проверенные индексы и агрегированную статистику по цифровым активам. Документация организована модульно, чтобы вы могли подключать новые API в несколько кликов.</p>
         <div class="hero-stats" id="hero-stats">
@@ -44,7 +43,7 @@
         </div>
         <div class="grid two">
           <div>
-            <p>Wild Boar Finance агрегирует рыночные данные из проверенных источников, нормализует их и строит индексы, которые помогают принимать обоснованные решения. Команда сочетает опыт в HFT, риск-менеджменте и построении инвестиционных продуктов.</p>
+            <p>Wild Boar агрегирует рыночные данные из проверенных источников, нормализует их и строит индексы, которые помогают принимать обоснованные решения. Команда сочетает опыт в HFT, риск-менеджменте и построении инвестиционных продуктов.</p>
             <ul>
               <li>Индексы DeFi и Altcoin с полнодневными OHLC данными.</li>
               <li>Контроль качества, бекапы и мониторинг отказоустойчивости.</li>
@@ -71,19 +70,16 @@
         <div class="grid two">
           <div>
             <ol class="ordered">
-              <li>Запросите ключ API в личном кабинете или у менеджера по адресу <a href="mailto:api@wildboar.finance">api@wildboar.finance</a>.</li>
-              <li>Ознакомьтесь с перечнем модулей в <code>apis/registry.js</code> и подключите нужные API.</li>
+              <li>Мы предоставляем бесплатные API для вашего удобства!</li>
+              <li>Ознакомьтесь с перечнем модулей в нашей документации и подключите нужные API.</li>
               <li>Следуйте документации модуля: там описаны методы, лимиты, структура ответов и примеры кода.</li>
             </ol>
-            <p>Публичные индексы доступны без ключа, однако мы рекомендуем указывать заголовок <code>X-Client-Contact</code> для быстрой обратной связи при инцидентах.</p>
-          </div>
-          <div>
+            <div>
             <div class="pill-row" id="global-pill-row">
-              <span class="pill">Базовый тариф: бесплатно</span>
               <span class="pill">Rate limit 60 req/min</span>
               <span class="pill">Latency &lt; 200 мс</span>
             </div>
-            <p>Предоставляем песочницу и выделенные мощности под enterprise запросы. Сообщите нам, если нужны повышенные лимиты или дополнительные форматы.</p>
+          </div>
           </div>
         </div>
       </section>
@@ -104,16 +100,15 @@
           <h2>Правила использования данных</h2>
         </div>
         <ul>
-          <li>Не используйте данные Wild Boar Finance для имитации наших продуктов или бренда.</li>
-          <li>При публикации индексов указывайте источник и ссылку на <code>wildboar.space</code>.</li>
+          <li>Не используйте данные Wild Boar для имитации наших продуктов или бренда.</li>
+          <li>При публикации индексов указывайте источник и ссылку на <code>wildboar.finance</code>.</li>
           <li>Коммерческое использование требует соглашения и соблюдения кредитования авторства.</li>
-          <li>Общие лимиты: 60 запросов в минуту на IP. Для расширения лимитов ищите нас в Telegram @wildboar_dev.</li>
         </ul>
-        <p>Мы оставляем за собой право приостановить доступ в случае нарушения правил или угрозы инфраструктуре.</p>
+        <p>Мы оставляем за собой право приостановить доступ к API в случае нарушения правил или угрозы инфраструктуре.</p>
       </section>
 
       <footer class="footer">
-        Wild Boar Finance © <span id="year"></span>. Создано с упором на модульность и масштабирование.
+        Wild Boar © <span id="year"></span>. Создано с упором на модульность и масштабирование.
       </footer>
     </main>
   </div>
