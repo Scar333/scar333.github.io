@@ -22,12 +22,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     yearNode.textContent = new Date().getFullYear();
   }
 
+  // Remove deprecated "About" section entirely
+  const aboutSection = document.getElementById("about");
+  if (aboutSection) {
+    aboutSection.remove();
+  }
+
   if (moduleGrid) {
     moduleGrid.innerHTML = '<div class="empty-state">Загружаем список API…</div>';
   }
 
   try {
     const docs = await loadApiModules();
+    applyRuntimeDocOverrides(docs);
     renderNav(docs);
     renderModuleCards(docs);
     renderApiSections(docs);
@@ -40,6 +47,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 });
+
+function applyRuntimeDocOverrides(docs) {
+  const targetSlugs = new Set(["defi-index", "altcoin-index"]);
+  docs.forEach((entry) => {
+    const doc = entry.doc;
+    if (!doc || !targetSlugs.has(doc.slug)) return;
+    doc.rateLimit = "30 req/min per IP";
+    if (Array.isArray(doc.endpoints)) {
+      doc.endpoints.forEach((ep) => {
+        if (!ep) return;
+        ep.rateLimit = "30 req/min";
+        // Add documented CORS response headers
+        const corsHeaders = [
+          { name: "Access-Control-Allow-Origin", required: false, description: "*, response header (CORS)." },
+          { name: "Access-Control-Allow-Methods", required: false, description: "GET, response header (CORS)." },
+          { name: "Access-Control-Allow-Headers", required: false, description: "*, response header (CORS)." },
+        ];
+        ep.headers = Array.isArray(ep.headers) && ep.headers.length
+          ? ep.headers
+          : corsHeaders;
+
+        if (Array.isArray(ep.errors)) {
+          ep.errors = ep.errors.map((err) =>
+            err && err.code === 429
+              ? { ...err, description: "Too many requests: 30 req/min limit." }
+              : err
+          );
+        }
+      });
+    }
+  });
+}
 
 async function loadApiModules() {
   const modules = await Promise.all(
@@ -89,6 +128,8 @@ function createNavSection(title, items) {
   list.className = "nav-list";
 
   items.forEach((item) => {
+    // Skip deprecated "About" from side menu
+    if (item.id === "about") return;
     const li = document.createElement("li");
     const link = document.createElement("a");
     link.className = "nav-link";
